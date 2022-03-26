@@ -1,0 +1,39 @@
+<%- include('../parts/head', {bot, user, path}) %>
+<br><br>
+<div class="container">
+  <center>
+  <i style="color: #fff;" class="fad fa-code fa-5x"></i>
+  <h3 style="color: #fff;">
+   Kod İsteği!
+  </h3>
+  </center>
+  <br><br>
+  <form method="POST" class="form-discorddark">
+
+<div class="form-group">
+    <label for="aciklama">Kod Adı</label>
+    <input type="text" class="form-control" name="kodadi" id="kodadi" aria-describedby="basic-addon3" required>
+</div>
+<div class="form-group">
+    <label>Kod Kategorisi</label>
+    <select name="kategori" id="kategori" required>
+        <option value="Javascript">Javascript</option>
+        <option value="HTML">HTML</option>
+        <option value="BDFD">BDFD</option>
+        <option value="altyapı">Altyapı</option>
+        <option value="aoi.js">Aoi.JS</option>
+  </select>
+</div>
+
+<div class="form-group">
+    <label for="aciklama">Kod Açıklaması</label>
+    <textarea type="text" class="form-control" id="aciklama" name="aciklama" required></textarea>
+</div>
+
+
+  <br>
+  <button type="submit" class="btn btn-primary"><i class="fad fa-save"></i> Onayla</button>
+</form>
+</div>
+<br><br>
+<%- include('../parts/foot') %>
