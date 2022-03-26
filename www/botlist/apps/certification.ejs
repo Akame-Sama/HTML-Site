@@ -1,1 +1,40 @@
+<%- include('../../parts/head', {bot, user, path}) %>
+<title>Sertifika | Tokyo Code | Bot</title>
+<div class="container px-3 mt-2 pt-5">
+    <div class="container px-3 content is-widescreen pt-5">
+        <div class="bg-vote-vcodes pt-5">
+            <h3 class="has-text-white is-size-3" style="margin-bottom: 10px;"> </h3>
+            <p class="has-text-white">&raquo&raquo Sertifika Gereksinimleri</p>
+            <p class="text-muted">
+                &raquo Botunuzun en az 5 gündür sitemizde olması gerekmektedir.
+                <br>&raquo 7/24 aktif olması gerekir. Küçük bakım yapmak veya hataları düzeltmek için yalnızca kısa arıza süreleri kabul edilir.
+                <br>&raquo Botunuzun orijinal / kendine ait özellikleri olması gerekmektedir.
+                <br>&raquo Mevcut başka bir projeden kopyalanmış olmamalıdır.
+                <br>&raquo Botun özellikleri hakkında çok net belgeler sağlayan bir siteye veya GitHub deposuna sahip olmalıdır.
+                <br>&raquo 100 sunucudan fazla sunucuda bulunmalıdır.
+                </p>
+            <br>
+            <p class="has-text-white">&raquo&raquo Sertifika Ayrıcalıkları</p>
+            <p class="text-muted">
+                <br>&raquo&raquo Botlar için;
+                <br>&raquo İnsanların sertifikalı olduğunu bilmelerini sağlamak için Discord sunucumuzda özel bir rol.
+                <br>&raquo Bot profilinizdeki özel bir rozet (                <span data-tooltip="<%=bot.guilds.cache.get(config.serverID).roles.cache.get(roles.certified_bot)%>" data-tooltip-location="top"> 
+                    <i class="fad fa-badge-check has-text-primary" style="font-size: 20px;"></i>
+                    </span>) insanlara bunun sertifikalı olduğunu bildirir.
+                
+                <br><br>&raquo&raquo Bot geliştiricileri için;
+                
+                <br>&raquo Discord sunucumuzda, insanlara sertifikalı olduğunuzu bildirmek için özel bir rol.
+                <br>&raquo Sizin profilinizdeki özel bir rozet (                <span data-tooltip="<%=bot.guilds.cache.get(config.serverID).roles.cache.get(roles.certified_developer)%>" data-tooltip-location="top"> 
+                    <i class="fad fa-badge-check" style="color: <%=bot.guilds.cache.get(config.serverID).roles.cache.get(roles.certified_developer)%>;font-size: 20px;"></i>
+                    </span>) insanların sertifikalı botunuz olduğunu bilmesini sağlar.
+                </p>
+            <br>
+        </div>
+    </div>
+    <center>
+    <button onclick="location.href='/certification/apply'" class="btn btn-back"><i class="fad fa-check"></i>&nbsp;Sertifika başvurusunda bulun</button>
+    </center>
+</div>
 
+<%- include('../../parts/foot') %>
