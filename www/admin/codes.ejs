@@ -6,7 +6,7 @@
             <nav class="breadcrumb-one" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Bot List</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Uptimelar</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Codes</a></li>
                 </ol>
             </nav>
         </div>
@@ -18,29 +18,31 @@
                     <table id="default-ordering" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Kullanıcı Adı</th>
-                                <th>Link</th>
-                                <th>Uptime Code</th>
-                                <th class="text-center dt-no-sorting">Eylem</th>
+                                <th>Kod Adı</th>
+                                <th>Kod</th>
+                                <th>Kod Kategorisi</th>
+                                <th class="text-center dt-no-sorting">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% updata.map(b => {%>
+                            <% koddata.map(b => {%>
                             <tr>
-                                <td><%= b.userName %></td>
-                                <td><%= b.link %></td>
+                                <td><%= b.codeName %></td>
                                 <td><%= b.code %></td>
+                                <td><%= b.codeCategory %></td>
+                            
                                 <td class="text-center">
-                                    <button onclick="window.location.href='/admin/deleteuptime/<%= b.code %>'" class="btn btn-danger btn-sm">Sil</button>
+                                    <button onclick="window.location.href='/admin/editcode/<%= b.code %>'" class="btn btn-success btn-sm">Edit</button>
+                                    <button onclick="deletequest('<%= b.code %>')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
                             <% }) %>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Kullanıcı Adı</th>
-                                <th>Link</th>
-                                <th>Uptime Code</th>
+                                <th>Code Name</th>
+                                <th>Code</th>
+                                <th>Code Category</th>
                                 <th class="invisible"></th>
                             </tr>
                         </tfoot>
@@ -49,6 +51,27 @@
             </div>
         </div>
         <script>
+            function deletequest(uptimecode) {
+Swal.fire({
+  title: 'Are you sure?',
+  text: "Are you sure you want to permanently delete the link you selected?",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, cancel it!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location.href = '/admin/deletecode/'+uptimecode;
+  } else {
+    Swal.fire(
+      'Canceled..',
+      'Link deletion from the uptime system has been canceled.',
+      'error'
+    )
+  }
+})
+}
             var urlParams = new URLSearchParams(window.location.search);
             if(urlParams.has('success') && urlParams.get('success')){
             Swal.fire({
@@ -59,7 +82,7 @@
              footer: 'Copyright 2021 &copy Tokyo Code - All right reserved.'
             }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = '/admin/uptimes';
+            window.location.href = '/admin/codes';
           }
         })
             }
@@ -71,7 +94,7 @@
              footer: 'Copyright 2021 &copy Tokyo Code - All right reserved.'
             }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = '/admin/uptimes';
+            window.location.href = '/admin/codes';
           }    
         })
             }

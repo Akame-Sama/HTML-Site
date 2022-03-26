@@ -6,7 +6,7 @@
             <nav class="breadcrumb-one" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Bot List</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Uptimelar</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Approved Bots</a></li>
                 </ol>
             </nav>
         </div>
@@ -18,29 +18,33 @@
                     <table id="default-ordering" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Kullanıcı Adı</th>
-                                <th>Link</th>
-                                <th>Uptime Code</th>
-                                <th class="text-center dt-no-sorting">Eylem</th>
+                                <th>Bot Name</th>
+                                <th>Owner</th>
+                                <th>Prefix</th>
+                                <th>Invite</th>
+                                <th class="text-center dt-no-sorting">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% updata.map(b => {%>
+                            <% botdata.filter(a => a.status === "Approved").map(b => {%>
                             <tr>
-                                <td><%= b.userName %></td>
-                                <td><%= b.link %></td>
-                                <td><%= b.code %></td>
+                                <td><%= b.username %></td>
+                                <td><%= b.ownerName %></td>
+                                <td><%= b.prefix %></td>
+                                <td><button onclick="newtab('https://discord.com/api/oauth2/authorize?client_id=<%= b.botID %>&permissions=0&scope=bot')" class="btn btn-primary btn-sm">Perm 0</button>
+                                    <button onclick="newtab('https://discord.com/api/oauth2/authorize?client_id=<%= b.botID %>&permissions=8&scope=bot')" class="btn btn-info btn-sm">Perm 8</button> </td>
                                 <td class="text-center">
-                                    <button onclick="window.location.href='/admin/deleteuptime/<%= b.code %>'" class="btn btn-danger btn-sm">Sil</button>
+                                    <button onclick="newtab('/admin/delete/<%= b.botID %>')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
                             <% }) %>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Kullanıcı Adı</th>
-                                <th>Link</th>
-                                <th>Uptime Code</th>
+                                <th>Bot Name</th>
+                                <th>Owner</th>
+                                <th>Prefix</th>
+                                <th>Invite</th>
                                 <th class="invisible"></th>
                             </tr>
                         </tfoot>
@@ -59,7 +63,7 @@
              footer: 'Copyright 2021 &copy Tokyo Code - All right reserved.'
             }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = '/admin/uptimes';
+            window.location.href = `/admin/approved`;
           }
         })
             }
@@ -71,7 +75,7 @@
              footer: 'Copyright 2021 &copy Tokyo Code - All right reserved.'
             }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = '/admin/uptimes';
+            window.location.href = '/admin/approved';
           }    
         })
             }
