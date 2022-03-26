@@ -1,0 +1,10 @@
+{
+  "prefix" : "?",
+  "owner" : ["771311848993587210", "576451390277156899"],
+  "clientid" : "903993961943797811",
+  "clientcallback" : "https://tokyocode.glitch.me/callback",
+  "mongoURL" : "mongodb+srv://tokyo:tokyo@tokyo.qqh3o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "serverID": "891375402679931000",
+  "footer": "Tokyo Code",
+  "tags": ["Moderasyon", "Eğlence", "Minecraft","Ekonomi","Koruma","NSFW (+18)","Anime","Davet","Müzik","Logging", "Web Panelli", "Reddit", "Youtube", "Twitch", "Crypto", "Seviye", "Oyun", "Roleplay", "Faydalı", "Türkçe"]
+}
